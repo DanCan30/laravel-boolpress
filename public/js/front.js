@@ -7485,17 +7485,8 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("h1", [_vm._v("Check the newest posts: ")]), _vm._v(" "), _c("section", {
-    staticClass: "container"
-  }, _vm._l(_vm.posts, function (post) {
-    return _c("PostCard", {
-      key: post.id,
-      attrs: {
-        post: post
-      }
-    });
-  }), 1), _vm._v(" "), _c("div", {
-    staticClass: "button-container"
+  return _c("div", [_c("h1", [_vm._v("Check the newest posts: ")]), _vm._v(" "), _c("div", {
+    staticClass: "pagination-buttons-container"
   }, [_c("a", {
     attrs: {
       href: "#"
@@ -7514,7 +7505,54 @@ var render = function render() {
         return _vm.goToPreviousPage();
       }
     }
-  }, [_vm._v("Previous")]), _vm._v(" "), _c("a", {
+  }, [_vm._v("Previous")]), _vm._v(" "), _c("span", [_vm._v(" Page n° " + _vm._s(_vm.currentPage))]), _vm._v(" "), _c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.goToNextPage();
+      }
+    }
+  }, [_vm._v("Next")]), _vm._v(" "), _c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.goToLastPage();
+      }
+    }
+  }, [_vm._v(">>|")])]), _vm._v(" "), _c("section", {
+    staticClass: "cards-container"
+  }, _vm._l(_vm.posts, function (post) {
+    return _c("PostCard", {
+      key: post.id,
+      attrs: {
+        post: post
+      }
+    });
+  }), 1), _vm._v(" "), _c("div", {
+    staticClass: "pagination-buttons-container"
+  }, [_c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.goToFirstPage();
+      }
+    }
+  }, [_vm._v("|<<")]), _vm._v(" "), _c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.goToPreviousPage();
+      }
+    }
+  }, [_vm._v("Previous")]), _vm._v(" "), _c("span", [_vm._v(" Page n° " + _vm._s(_vm.currentPage))]), _vm._v(" "), _c("a", {
     attrs: {
       href: "#"
     },
@@ -22361,7 +22399,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Nunito\", sans-serif;\n}\nh1 {\n  text-transform: uppercase;\n  font-size: 4rem;\n  text-align: center;\n  margin-top: 2rem;\n}\nsection.container {\n  max-width: 80%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n  margin: 5rem auto;\n}\ndiv.button-container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 2rem;\n  margin-bottom: 3rem;\n}\ndiv.button-container a {\n  text-decoration: none;\n  color: blue;\n}", ""]);
+exports.push([module.i, "* {\n  margin: 0;\n  padding: 0;\n  box-sizing: border-box;\n  font-family: \"Nunito\", sans-serif;\n}\nh1 {\n  text-transform: uppercase;\n  font-size: 4rem;\n  text-align: center;\n  margin-top: 2rem;\n}\nsection.cards-container {\n  max-width: 80%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n  margin: 5rem auto;\n}\ndiv.pagination-buttons-container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 2rem;\n  margin-bottom: 3rem;\n}\ndiv.pagination-buttons-container a {\n  text-decoration: none;\n  color: blue;\n}", ""]);
 
 // exports
 

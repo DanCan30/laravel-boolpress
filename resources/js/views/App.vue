@@ -3,14 +3,23 @@
 
         <h1>Check the newest posts: </h1>
 
-        <section class="container">
+        <div class="pagination-buttons-container">
+            <a href="#" @click="goToFirstPage()">|<<</a>
+            <a href="#" @click="goToPreviousPage()">Previous</a>
+            <span> Page n° {{ currentPage }}</span>
+            <a href="#" @click="goToNextPage()">Next</a>
+            <a href="#" @click="goToLastPage()">>>|</a>
+        </div>
+
+        <section class="cards-container">
 
             <PostCard v-for="post in posts" :key="post.id" :post="post"/>
         </section>
         
-        <div class="button-container">
+        <div class="pagination-buttons-container">
             <a href="#" @click="goToFirstPage()">|<<</a>
             <a href="#" @click="goToPreviousPage()">Previous</a>
+            <span> Page n° {{ currentPage }}</span>
             <a href="#" @click="goToNextPage()">Next</a>
             <a href="#" @click="goToLastPage()">>>|</a>
         </div>
@@ -122,7 +131,7 @@ h1 {
     margin-top: 2rem;
 }
 
-    section.container {
+    section.cards-container {
         max-width: 80%;
         display: flex;
         justify-content: center;
@@ -131,7 +140,7 @@ h1 {
         margin: 5rem auto;
     }
 
-    div.button-container {
+    div.pagination-buttons-container {
         display: flex;
         justify-content: center;
         align-items: center;
