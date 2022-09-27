@@ -26,7 +26,7 @@ export default {
 
     methods: {
         getPosts: function() {
-            axios.get("api/posts?page=" + this.currentPage)
+            axios.get("api/posts", {params: {"page" : this.currentPage}})
             .then((response)=> {
                 this.posts = response.data.data.data;
                 this.currentPage = response.data.data.current_page;

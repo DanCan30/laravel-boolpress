@@ -1926,7 +1926,11 @@ __webpack_require__.r(__webpack_exports__);
     getPosts: function getPosts() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/posts?page=" + this.currentPage).then(function (response) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/posts", {
+        params: {
+          "page": this.currentPage
+        }
+      }).then(function (response) {
         _this.posts = response.data.data.data;
         _this.currentPage = response.data.data.current_page;
         _this.lastPage = response.data.data.last_page;
