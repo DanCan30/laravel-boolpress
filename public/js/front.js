@@ -1918,6 +1918,7 @@ __webpack_require__.r(__webpack_exports__);
       previousPage: 0,
       currentPage: 1,
       nextPage: 0,
+      lastPage: 0,
       loading: false
     };
   },
@@ -1928,12 +1929,39 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("api/posts?page=" + this.currentPage).then(function (response) {
         _this.posts = response.data.data.data;
         _this.currentPage = response.data.data.current_page;
+        _this.lastPage = response.data.data.last_page;
         _this.previousPage = _this.currentPage - 1;
         _this.nextPage = _this.currentPage + 1;
         _this.loading = false;
       })["catch"](function (error) {
         return console.error(error.message);
       });
+    },
+    getNextPage: function getNextPage() {
+      if (this.currentPage === this.lastPage) {
+        this.currentPage = 1;
+        this.nextPage = this.currentPage + 1;
+        this.previousPage = 0;
+      } else {
+        this.currentPage = this.currentPage + 1;
+        this.nextPage = this.nextPage + 1;
+        this.previousPage = this.previousPage + 1;
+      }
+
+      this.getPosts();
+    },
+    getPreviousPage: function getPreviousPage() {
+      if (this.previousPage === 0) {
+        this.currentPage = this.lastPage;
+        this.nextPage = 1;
+        this.previousPage = this.currentPage - 1;
+      } else {
+        this.currentPage = this.currentPage - 1;
+        this.nextPage = this.nextPage - 1;
+        this.previousPage = this.previousPage - 1;
+      }
+
+      this.getPosts();
     }
   },
   created: function created() {
@@ -1964,7 +1992,25 @@ var render = function render() {
     return _c("li", {
       key: post.id
     }, [_vm._v("\n          " + _vm._s(post.title) + "\n      ")]);
-  }), 0)]);
+  }), 0), _vm._v(" "), _c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.getPreviousPage();
+      }
+    }
+  }, [_vm._v("Previous")]), _vm._v(" "), _c("a", {
+    attrs: {
+      href: "#"
+    },
+    on: {
+      click: function click($event) {
+        return _vm.getNextPage();
+      }
+    }
+  }, [_vm._v("Next")])]);
 };
 
 var staticRenderFns = [];
