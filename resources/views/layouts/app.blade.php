@@ -27,6 +27,21 @@
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 @guest
+
+                    @if (Route::has('login'))
+                        <div class="top-right links">
+                            @auth
+                                <a href="{{ url('/home') }}">Home</a>
+                            @else
+                                <a href="{{ route('login') }}">Login</a>
+
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}">Register</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
+                    
                 @else
                 <a href="{{ route("categories.index") }}">Categories</a>
                 <a href="{{ route("tags.index") }}" class="px-3">Tags</a>
