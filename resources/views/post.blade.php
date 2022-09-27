@@ -17,7 +17,7 @@
                     <span class="text-primary"> #{{ $tag->name }} </span>
                 @endforeach
             </span>
-            <img src="{{ asset("storage/" . $post->post_image) }}" class="w-75 align-self-center" alt="Post Image">
+            <img src="{{ filter_var($post->post_image, FILTER_VALIDATE_URL) ? $post->post_image : asset("storage/" . $post->post_image) }}" class="w-75 align-self-center" alt="Post Image">
             <p>{{ $post->content }}</p>
         </div>
     </div>
