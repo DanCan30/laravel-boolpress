@@ -9,7 +9,7 @@
         {{ post.user.name }} | {{ post.date }}
     </h4>
     <p>
-        {{ post.content.length > 100 ? shownContent + "..." : post.content}}
+        {{ post.content.length > 100 && !fullContentShowed ? shownContent + "..." : post.content}}
         <a v-if="post.content.length >= 100 && !fullContentShowed" @click="showFullContent(post.content)">Show more</a>
         <a v-else-if="fullContentShowed" @click="collapseContent()">Show less</a>
     </p>
@@ -84,6 +84,7 @@ export default {
         h4 {
             align-self: flex-start;
             margin-bottom: 1rem;
+            margin-left: 3rem;
         }
 
         a {

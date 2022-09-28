@@ -2057,7 +2057,7 @@ var render = function render() {
       src: _vm.imgUrl ? _vm.post.post_image : "storage/" + _vm.post.post_image,
       alt: "Post image"
     }
-  })]), _vm._v(" "), _c("h4", [_vm._v("\n      " + _vm._s(_vm.post.user.name) + " | " + _vm._s(_vm.post.date) + "\n  ")]), _vm._v(" "), _c("p", [_vm._v("\n      " + _vm._s(_vm.post.content.length > 100 ? _vm.shownContent + "..." : _vm.post.content) + "\n      "), _vm.post.content.length >= 100 && !_vm.fullContentShowed ? _c("a", {
+  })]), _vm._v(" "), _c("h4", [_vm._v("\n      " + _vm._s(_vm.post.user.name) + " | " + _vm._s(_vm.post.date) + "\n  ")]), _vm._v(" "), _c("p", [_vm._v("\n      " + _vm._s(_vm.post.content.length > 100 && !_vm.fullContentShowed ? _vm.shownContent + "..." : _vm.post.content) + "\n      "), _vm.post.content.length >= 100 && !_vm.fullContentShowed ? _c("a", {
     on: {
       click: function click($event) {
         return _vm.showFullContent(_vm.post.content);
@@ -2199,7 +2199,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "div.card[data-v-1324358a] {\n  width: calc(50% - 4rem);\n  margin: 2rem;\n  padding: 2rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  border: 2px solid black;\n}\ndiv.card h2[data-v-1324358a] {\n  text-align: center;\n  padding: 1rem;\n  align-self: flex-start;\n}\ndiv.card h5[data-v-1324358a] {\n  align-self: flex-start;\n  margin-left: 1rem;\n}\ndiv.card h5 span[data-v-1324358a] {\n  color: rgb(103, 141, 217);\n}\ndiv.card div.img-container[data-v-1324358a] {\n  margin: 1rem;\n}\ndiv.card div.img-container img[data-v-1324358a] {\n  max-width: 100%;\n}\ndiv.card h4[data-v-1324358a] {\n  align-self: flex-start;\n  margin-bottom: 1rem;\n}\ndiv.card a[data-v-1324358a] {\n  color: blue;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, "div.card[data-v-1324358a] {\n  width: calc(50% - 4rem);\n  margin: 2rem;\n  padding: 2rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  border: 2px solid black;\n}\ndiv.card h2[data-v-1324358a] {\n  text-align: center;\n  padding: 1rem;\n  align-self: flex-start;\n}\ndiv.card h5[data-v-1324358a] {\n  align-self: flex-start;\n  margin-left: 1rem;\n}\ndiv.card h5 span[data-v-1324358a] {\n  color: rgb(103, 141, 217);\n}\ndiv.card div.img-container[data-v-1324358a] {\n  margin: 1rem;\n}\ndiv.card div.img-container img[data-v-1324358a] {\n  max-width: 100%;\n}\ndiv.card h4[data-v-1324358a] {\n  align-self: flex-start;\n  margin-bottom: 1rem;\n  margin-left: 3rem;\n}\ndiv.card a[data-v-1324358a] {\n  color: blue;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
