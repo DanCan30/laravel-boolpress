@@ -9,14 +9,16 @@
         {{ post.user.name }} | {{ post.date }}
     </h4>
     <p>
-        {{ post.content.substring(0, 100) }}...
+        {{ post.content.length > 100 ? shownContent + "..." : post.content}}
+        <a v-if="post.content.length >= 100 && !fullContentShowed" @click="showFullContent(post.content)">Show more</a>
+        <a v-else-if="fullContentShowed" @click="collapseContent(post.content)">Show less</a>
     </p>
 
   </div>
 </template>
 
 <script>
-import { createDecipheriv } from 'crypto';
+// import { createDecipheriv } from 'crypto';
 
 export default {
     props: {
@@ -26,11 +28,21 @@ export default {
     data: function() {
         return {
             imgUrl: new URL(this.post.post_image),
+            shownContent: this.post.content.substring(0, 100),
+            fullContentShowed : false,
         }
     },
 
-    created() {
-        console.log(this.post.tags)
+    methods: {
+        showFullContent : function(content) {
+            this.fullContentShowed = true;
+            return this.shownContent = content;
+        },
+        
+        collapseContent : function(content) {
+            this.fullContentShowed = false;
+            return this.shownContent = this.shownContent.substring(0, 100);
+        }
     }
 }
 </script>
@@ -72,6 +84,11 @@ export default {
         h4 {
             align-self: flex-start;
             margin-bottom: 1rem;
+        }
+
+        a {
+            color: blue;
+            cursor: pointer;
         }
 
     }
