@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Admin\Category;
+use App\Models\Admin\Tag;
 use Illuminate\Http\Request;
 
-class CategoriesController extends Controller
+class TagsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,11 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        $categories = Category::with("posts.tags")->paginate(10);
+        $tags = Tag::with("posts")->paginate(5);
 
         return response()->json([
             "result" => true,
-            "data" => $categories
+            "data" => $tags,
         ]);
     }
 
@@ -52,12 +52,12 @@ class CategoriesController extends Controller
      */
     public function show($id)
     {
-        $category = Category::with("posts.tags")->find($id);
+        $tag = Tag::with("posts.user")->find($id);
 
-        if($category) {
+        if ($tag) {
             return response()->json([
                 "result" => true,
-                "data" => $category,
+                "data" => $tag
             ]);
         } else {
             return response(" ", 404);
