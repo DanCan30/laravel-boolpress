@@ -1925,7 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
       this.fullContentShowed = true;
       return this.shownContent = content;
     },
-    collapseContent: function collapseContent(content) {
+    collapseContent: function collapseContent() {
       this.fullContentShowed = false;
       return this.shownContent = this.shownContent.substring(0, 100);
     }
@@ -2066,7 +2066,7 @@ var render = function render() {
   }, [_vm._v("Show more")]) : _vm.fullContentShowed ? _c("a", {
     on: {
       click: function click($event) {
-        return _vm.collapseContent(_vm.post.content);
+        return _vm.collapseContent();
       }
     }
   }, [_vm._v("Show less")]) : _vm._e()])]);

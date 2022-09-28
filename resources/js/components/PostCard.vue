@@ -11,7 +11,7 @@
     <p>
         {{ post.content.length > 100 ? shownContent + "..." : post.content}}
         <a v-if="post.content.length >= 100 && !fullContentShowed" @click="showFullContent(post.content)">Show more</a>
-        <a v-else-if="fullContentShowed" @click="collapseContent(post.content)">Show less</a>
+        <a v-else-if="fullContentShowed" @click="collapseContent()">Show less</a>
     </p>
 
   </div>
@@ -39,7 +39,7 @@ export default {
             return this.shownContent = content;
         },
         
-        collapseContent : function(content) {
+        collapseContent : function() {
             this.fullContentShowed = false;
             return this.shownContent = this.shownContent.substring(0, 100);
         }
