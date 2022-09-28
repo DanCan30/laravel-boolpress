@@ -17,7 +17,7 @@ class PostsController extends Controller
         "title" => "required|min:3|max:150",
         "content" => "required|min:5",
         "post_image" => "image|max:2048",
-        "category" => "required|exists:categories,id",
+        "category_id" => "required|exists:categories,id",
         "tags" => "exists:tags,id",
     ];
 
@@ -61,12 +61,10 @@ class PostsController extends Controller
         $postData = $request->validate($this->validationRules);
 
         $post = new Post();
-        $post->title = $postData["title"];
+        $post->fill($postData);
         $post->user_id = Auth::user()->id;
-        $post->content = $postData["content"];
         $post->post_image = Storage::put("uploads/" . Auth::user()->name . "/posts", $request->post_image);
         $post->date = date("Y/m/d H:i:s");
-        $post->category_id = $postData["category"];
         
         $post->save();
         if($request->tags) {
@@ -117,12 +115,9 @@ class PostsController extends Controller
         $postData = $request->validate($this->validationRules);
 
         $post = Post::findOrFail($id);
-        $post->title = $postData["title"];
-        $post->content = $postData["content"];
         $post->post_image = Storage::put("uploads/" . $post->user->name . "/posts", $request->post_image);
-        $post->category_id = $postData["category"];
-
-        $post->save();
+        $post->fill($postData);
+        $post->update();
 
         if($request->tags) {
             $post->tags()->sync($request->tags);

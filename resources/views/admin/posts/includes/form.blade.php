@@ -21,14 +21,14 @@
     @include("admin.posts.includes.error", [$inputName = "post_image"])
     
     <h4>Category</h4>
-    <select required name="category" id="category-input" class="mb-5">
+    <select required name="category_id" id="category-input" class="mb-5">
         @foreach ($categories as $category)
             <option 
             {{ isset($post->category->id) && $category->id == $post->category->id ? "selected" : "" }}
             value="{{ $category->id }}">{{ $category->name }}</option>
         @endforeach
     </select>
-    @include("admin.posts.includes.error", [$inputName = "category"])
+    @include("admin.posts.includes.error", [$inputName = "category_id"])
 
     <h4>Tags</h4>
     <div class="form-check form-check-inline d-flex justify-content-around">
