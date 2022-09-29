@@ -1,12 +1,14 @@
 <template>
     <div>
-        <PostCard :post="post"/>
+        <LoaderComponent v-if="isLoading"/>
+        <PostCard v-else :post="post"/>
     </div>
 </template>
 
 <script>
 
 import PostCard from "../components/PostCard.vue";
+import LoaderComponent from "../components/LoaderComponent.vue";
 import axios from "axios";
 
 export default {
@@ -14,12 +16,13 @@ export default {
 
     components: {
         PostCard,
+        LoaderComponent
     },
 
     data: function() {
         return {
             post: {},
-            isLoading: false,
+            isLoading: true,
         }
     }, 
     
@@ -30,6 +33,7 @@ export default {
             axios.get("/api/posts/" + id )
             .then((response) => {
                 this.post = response.data.result;
+                this.isLoading = false;
             })
         }
     },

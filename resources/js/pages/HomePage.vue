@@ -1,27 +1,31 @@
 <template>
     <div>
 
-        <div class="pagination-buttons-container">
-            <a href="#" @click="goToFirstPage()">|<<</a>
-            <a href="#" @click="goToPreviousPage()">Previous</a>
-            <span> Page n° {{ currentPage }}</span>
-            <a href="#" @click="goToNextPage()">Next</a>
-            <a href="#" @click="goToLastPage()">>>|</a>
+        <LoaderComponent v-if="isLoading" />
+        <div v-else>
+            
+            <div class="pagination-buttons-container">
+                <a href="#" @click="goToFirstPage()">|<<</a>
+                <a href="#" @click="goToPreviousPage()">Previous</a>
+                <span> Page n° {{ currentPage }}</span>
+                <a href="#" @click="goToNextPage()">Next</a>
+                <a href="#" @click="goToLastPage()">>>|</a>
+            </div>
+            
+            <section class="cards-container">
+                
+                <PostCard v-for="post in posts" :key="post.id" :post="post"/>
+            </section>
+            
+            <div class="pagination-buttons-container">
+                <a href="#" @click="goToFirstPage()">|<<</a>
+                <a href="#" @click="goToPreviousPage()">Previous</a>
+                <span> Page n° {{ currentPage }}</span>
+                <a href="#" @click="goToNextPage()">Next</a>
+                <a href="#" @click="goToLastPage()">>>|</a>
+            </div>
+            
         </div>
-
-        <section class="cards-container">
-
-            <PostCard v-for="post in posts" :key="post.id" :post="post"/>
-        </section>
-
-        <div class="pagination-buttons-container">
-            <a href="#" @click="goToFirstPage()">|<<</a>
-            <a href="#" @click="goToPreviousPage()">Previous</a>
-            <span> Page n° {{ currentPage }}</span>
-            <a href="#" @click="goToNextPage()">Next</a>
-            <a href="#" @click="goToLastPage()">>>|</a>
-        </div>
-
     </div>
 </template>
 
@@ -29,6 +33,7 @@
 
 import axios from 'axios';
 import PostCard from "../components/PostCard.vue";
+import LoaderComponent from "../components/LoaderComponent.vue";
 
 export default {
 
@@ -36,6 +41,7 @@ export default {
 
     components: {
         PostCard,
+        LoaderComponent
     },
 
     data: function() {
@@ -45,7 +51,7 @@ export default {
             currentPage: 1,
             nextPage: 0,
             lastPage: 0,
-            loading: false,
+            isLoading: true,
         }
     },
 
@@ -58,7 +64,7 @@ export default {
                 this.lastPage = response.data.result.last_page;
                 this.previousPage = this.currentPage - 1;
                 this.nextPage = this.currentPage + 1;
-                this.loading = false;
+                this.isLoading = false;
             }).catch((error) => console.error(error.message));
         },
 
