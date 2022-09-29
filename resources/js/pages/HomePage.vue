@@ -53,9 +53,9 @@ export default {
         getPosts: function() {
             axios.get("api/posts", {params: {"page" : this.currentPage}})
             .then((response)=> {
-                this.posts = response.data.data.data;
-                this.currentPage = response.data.data.current_page;
-                this.lastPage = response.data.data.last_page;
+                this.posts = response.data.result.data;
+                this.currentPage = response.data.result.current_page;
+                this.lastPage = response.data.result.last_page;
                 this.previousPage = this.currentPage - 1;
                 this.nextPage = this.currentPage + 1;
                 this.loading = false;

@@ -18,8 +18,8 @@ class TagsController extends Controller
         $tags = Tag::with("posts")->paginate(5);
 
         return response()->json([
-            "result" => true,
-            "data" => $tags,
+            "response" => true,
+            "result" => $tags,
         ]);
     }
 
@@ -56,8 +56,8 @@ class TagsController extends Controller
 
         if ($tag) {
             return response()->json([
-                "result" => true,
-                "data" => $tag
+                "response" => true,
+                "result" => $tag
             ]);
         } else {
             return response(" ", 404);

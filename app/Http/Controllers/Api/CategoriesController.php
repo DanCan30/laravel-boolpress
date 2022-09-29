@@ -18,8 +18,8 @@ class CategoriesController extends Controller
         $categories = Category::with("posts.tags")->paginate(10);
 
         return response()->json([
-            "result" => true,
-            "data" => $categories
+            "response" => true,
+            "result" => $categories
         ]);
     }
 
@@ -56,8 +56,8 @@ class CategoriesController extends Controller
 
         if($category) {
             return response()->json([
-                "result" => true,
-                "data" => $category,
+                "response" => true,
+                "result" => $category,
             ]);
         } else {
             return response(" ", 404);

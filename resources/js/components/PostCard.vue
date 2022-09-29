@@ -1,9 +1,9 @@
 <template>
   <div class="card">
-    <h2>{{ post.title }}</h2>
+    <router-link :to="'/posts/' + post.id"><h2>{{ post.title }}</h2></router-link>
     <h5>{{ post.category.name }} - <span v-for="tag in post.tags" :key="tag.id"> #{{ tag.name }} </span></h5>
     <div class="img-container">
-        <img :src="imgUrl ? post.post_image : 'storage/' + post.post_image" alt="Post image">
+        <img :src="isValidUrl(post.post_image) ? post.post_image : 'http://127.0.0.1:8000/storage/' + post.post_image" alt="Post image">
     </div>
     <h4>
         {{ post.user.name }} | {{ post.date }}
@@ -29,7 +29,6 @@ export default {
 
     data: function() {
         return {
-            imgUrl: new URL(this.post.post_image),
             shownContent: this.post.content.substring(0, 100),
             fullContentShowed : false,
         }
@@ -44,7 +43,16 @@ export default {
         collapseContent : function() {
             this.fullContentShowed = false;
             return this.shownContent = this.shownContent.substring(0, 100);
-        }
+        },
+
+        isValidUrl: function(string) {
+            try {
+                new URL(string);
+                return true;
+            } catch (err) {
+                return false;
+            }
+        },
     },
 }
 </script>

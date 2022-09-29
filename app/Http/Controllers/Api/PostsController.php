@@ -18,9 +18,9 @@ class PostsController extends Controller
         $posts = Post::with("user", "category", "tags")->paginate(10);
 
         return response()->json([
-            "result" => true,
+            "response" => true,
             "count" => count($posts),
-            "data" => $posts,
+            "result" => $posts,
         ]);
     }
 
@@ -57,8 +57,8 @@ class PostsController extends Controller
 
         if ($post) {
             return response()->json([
-                "result" => true,
-                "data" => $post,
+                "response" => true,
+                "result" => $post,
             ]);
         } 
         else {
