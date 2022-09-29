@@ -1930,18 +1930,26 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      shownContent: this.post.content.substring(0, 100),
+      // shownContent: this.post.content.substring(0, 100),
       fullContentShowed: false
     };
   },
   methods: {
+    showContent: function showContent(content) {
+      if (content.length > 100 && !this.fullContentShowed) {
+        var cuttedContent = content.substring(0, 100);
+        return cuttedContent + "...";
+      } else {
+        return content;
+      }
+    },
     showFullContent: function showFullContent(content) {
       this.fullContentShowed = true;
-      return this.shownContent = content;
+      return content;
     },
-    collapseContent: function collapseContent() {
+    collapseContent: function collapseContent(content) {
       this.fullContentShowed = false;
-      return this.shownContent = this.shownContent.substring(0, 100);
+      return content.substring(0, 100);
     },
     isValidUrl: function isValidUrl(string) {
       try {
@@ -2112,7 +2120,6 @@ __webpack_require__.r(__webpack_exports__);
       var id = this.$route.params.id;
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("/api/posts/" + id).then(function (response) {
         _this.post = response.data.result;
-        console.log(response.data.result);
       });
     }
   },
@@ -2214,7 +2221,7 @@ var render = function render() {
       src: _vm.isValidUrl(_vm.post.post_image) ? _vm.post.post_image : "http://127.0.0.1:8000/storage/" + _vm.post.post_image,
       alt: "Post image"
     }
-  })]), _vm._v(" "), _c("h4", [_vm._v("\n      " + _vm._s(_vm.post.user.name) + " | " + _vm._s(_vm.post.date) + "\n  ")]), _vm._v(" "), _c("p", [_vm._v("\n      " + _vm._s(_vm.post.content.length > 100 && !_vm.fullContentShowed ? _vm.shownContent + "..." : _vm.post.content) + "\n      "), _vm.post.content.length >= 100 && !_vm.fullContentShowed ? _c("a", {
+  })]), _vm._v(" "), _c("h4", [_vm._v("\n      " + _vm._s(_vm.post.user.name) + " | " + _vm._s(_vm.post.date) + "\n  ")]), _vm._v(" "), _c("p", [_vm._v("\n      " + _vm._s(_vm.showContent(_vm.post.content)) + "\n      "), _vm.post.content.length >= 100 && !_vm.fullContentShowed ? _c("a", {
     on: {
       click: function click($event) {
         return _vm.showFullContent(_vm.post.content);
@@ -2223,7 +2230,7 @@ var render = function render() {
   }, [_vm._v("Show more")]) : _vm.fullContentShowed ? _c("a", {
     on: {
       click: function click($event) {
-        return _vm.collapseContent();
+        return _vm.collapseContent(_vm.post.content);
       }
     }
   }, [_vm._v("Show less")]) : _vm._e()])], 1);
