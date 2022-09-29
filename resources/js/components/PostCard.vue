@@ -18,9 +18,11 @@
 </template>
 
 <script>
-// import { createDecipheriv } from 'crypto';
 
 export default {
+
+    name: "PostCard",
+
     props: {
         "post" : Object,
     },
@@ -43,7 +45,7 @@ export default {
             this.fullContentShowed = false;
             return this.shownContent = this.shownContent.substring(0, 100);
         }
-    }
+    },
 }
 </script>
 
