@@ -3,9 +3,9 @@
     <h1>Boolpress</h1>
     <nav>
         <ul>
-            <li>Posts</li>
-            <li>About</li>
-            <li>Contact</li>
+            <li><router-link to="/">Home</router-link></li>
+            <li><router-link to="/about">About us</router-link></li>
+            <li><router-link to="/contact">Contact</router-link></li>
         </ul>
     </nav>
   </header>
@@ -23,6 +23,7 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding-block: 1rem;
 
         nav ul {
             display: flex;
@@ -30,6 +31,12 @@ export default {
             align-items: center;
             list-style: none;
             gap: 2rem;
+
+            li a {
+                color: #000;
+                text-decoration: none;
+                font-weight: bold;
+            }
         }
     }
 </style>

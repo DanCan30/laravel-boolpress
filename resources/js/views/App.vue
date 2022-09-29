@@ -1,7 +1,8 @@
 <template>
     <div class="container">
         <HeaderComponent />
-        <HomePage />
+        <!-- <HomePage /> -->
+        <router-view></router-view>
     </div>
 </template>
 
