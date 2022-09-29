@@ -30,7 +30,6 @@ export default {
             axios.get("/api/posts/" + id )
             .then((response) => {
                 this.post = response.data.result;
-                console.log(response.data.result);
             })
         }
     },

@@ -9,9 +9,9 @@
         {{ post.user.name }} | {{ post.date }}
     </h4>
     <p>
-        {{ post.content.length > 100 && !fullContentShowed ? shownContent + "..." : post.content}}
+        {{ showContent(post.content) }}
         <a v-if="post.content.length >= 100 && !fullContentShowed" @click="showFullContent(post.content)">Show more</a>
-        <a v-else-if="fullContentShowed" @click="collapseContent()">Show less</a>
+        <a v-else-if="fullContentShowed" @click="collapseContent(post.content)">Show less</a>
     </p>
 
   </div>
@@ -29,20 +29,30 @@ export default {
 
     data: function() {
         return {
-            shownContent: this.post.content.substring(0, 100),
+            // shownContent: this.post.content.substring(0, 100),
             fullContentShowed : false,
         }
     },
 
     methods: {
+
+        showContent: function(content) {
+            if(content.length > 100 && !this.fullContentShowed) {
+                const cuttedContent = content.substring(0, 100);
+                return cuttedContent + "...";
+            } else {
+                return content;
+            }
+        },
+
         showFullContent : function(content) {
             this.fullContentShowed = true;
-            return this.shownContent = content;
+            return content;
         },
         
-        collapseContent : function() {
+        collapseContent : function(content) {
             this.fullContentShowed = false;
-            return this.shownContent = this.shownContent.substring(0, 100);
+            return content.substring(0, 100);
         },
 
         isValidUrl: function(string) {
