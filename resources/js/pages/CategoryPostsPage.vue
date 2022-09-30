@@ -46,7 +46,6 @@ export default {
             axios.get("/api/categories/" + slug)
             .then((response)=> {
                 this.category = response.data.result;
-                console.warn(this.category);
                 this.isLoading = false;
             }).catch((error) => console.error(error.message));
         },

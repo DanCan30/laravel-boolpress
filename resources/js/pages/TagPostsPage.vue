@@ -46,7 +46,6 @@ export default {
             axios.get("/api/tags/" + slug)
             .then((response)=> {
                 this.tag = response.data.result;
-                console.warn(this.tag);
                 this.isLoading = false;
             }).catch((error) => console.error(error.message));
         },

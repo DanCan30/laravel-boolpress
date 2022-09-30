@@ -2093,7 +2093,6 @@ __webpack_require__.r(__webpack_exports__);
       var slug = this.$route.params.slug;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/categories/" + slug).then(function (response) {
         _this.category = response.data.result;
-        console.warn(_this.category);
         _this.isLoading = false;
       })["catch"](function (error) {
         return console.error(error.message);
@@ -2301,7 +2300,6 @@ __webpack_require__.r(__webpack_exports__);
       var slug = this.$route.params.slug;
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/tags/" + slug).then(function (response) {
         _this.tag = response.data.result;
-        console.warn(_this.tag);
         _this.isLoading = false;
       })["catch"](function (error) {
         return console.error(error.message);
@@ -2429,23 +2427,33 @@ var render = function render() {
 
   return _c("header", [_c("h1", [_vm._v("Boolpress")]), _vm._v(" "), _c("nav", [_c("ul", [_c("li", [_c("router-link", {
     attrs: {
-      to: "/"
+      to: {
+        name: "home"
+      }
     }
   }, [_vm._v("Posts")])], 1), _vm._v(" "), _c("li", [_c("router-link", {
     attrs: {
-      to: "/categories"
+      to: {
+        name: "categories"
+      }
     }
   }, [_vm._v("Categories")])], 1), _vm._v(" "), _c("li", [_c("router-link", {
     attrs: {
-      to: "/tags"
+      to: {
+        name: "tags"
+      }
     }
   }, [_vm._v("Tags")])], 1), _vm._v(" "), _c("li", [_c("router-link", {
     attrs: {
-      to: "/about"
+      to: {
+        name: "about"
+      }
     }
   }, [_vm._v("About us")])], 1), _vm._v(" "), _c("li", [_c("router-link", {
     attrs: {
-      to: "/contact"
+      to: {
+        name: "contact"
+      }
     }
   }, [_vm._v("Contact")])], 1)])])]);
 };
@@ -2511,14 +2519,24 @@ var render = function render() {
   }, [_vm._v(_vm._s(_vm.post.title))])], 1), _vm._v(" "), _c("h5", [_c("router-link", {
     staticClass: "category-link",
     attrs: {
-      to: "/categories/" + _vm.post.category.slug
+      to: {
+        name: "categoryPostsPage",
+        params: {
+          slug: _vm.post.category.slug
+        }
+      }
     }
-  }, [_vm._v(_vm._s(_vm.post.category.name))]), _vm._v("  - "), _vm._l(_vm.post.tags, function (tag) {
+  }, [_vm._v(_vm._s(_vm.post.category.name))]), _vm._v(" \n   - "), _vm._l(_vm.post.tags, function (tag) {
     return _c("router-link", {
       key: tag.id,
       staticClass: "tag-link",
       attrs: {
-        to: "/tags/" + tag.slug
+        to: {
+          name: "tagPostsPage",
+          params: {
+            slug: tag.slug
+          }
+        }
       }
     }, [_vm._v(" #" + _vm._s(tag.name) + " ")]);
   })], 2), _vm._v(" "), _c("div", {

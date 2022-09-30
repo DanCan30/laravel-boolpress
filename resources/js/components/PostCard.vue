@@ -1,7 +1,8 @@
 <template>
   <div class="card">
-    <h2><router-link :to="'/posts/' + post.id">{{ post.title }}</router-link></h2>
-    <h5><router-link class="category-link" :to="'/categories/' + post.category.slug">{{ post.category.name }}</router-link>  - <router-link class="tag-link" :to="'/tags/' + tag.slug " v-for="tag in post.tags" :key="tag.id"> #{{ tag.name }} </router-link></h5>
+    <h2 ><router-link :to="'/posts/' + post.id">{{ post.title }}</router-link></h2>
+    <h5><router-link class="category-link" :to="{name: 'categoryPostsPage', params: {slug: post.category.slug}}">{{ post.category.name }}</router-link> 
+     - <router-link class="tag-link" :to=" { name: 'tagPostsPage', params: {slug: tag.slug }}" v-for="tag in post.tags" :key="tag.id"> #{{ tag.name }} </router-link></h5>
     <div class="img-container">
         <img :src="isValidUrl(post.post_image) ? post.post_image : 'http://127.0.0.1:8000/storage/' + post.post_image" alt="Post image">
     </div>
