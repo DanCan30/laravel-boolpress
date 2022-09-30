@@ -5,7 +5,7 @@
         <ul>
             <li><router-link to="/">Posts</router-link></li>
             <li><router-link to="/categories">Categories</router-link></li>
-            <li><router-link to="/">Tags</router-link></li>
+            <li><router-link to="/tags">Tags</router-link></li>
             <li><router-link to="/about">About us</router-link></li>
             <li><router-link to="/contact">Contact</router-link></li>
         </ul>
