@@ -11,6 +11,7 @@ import CategoriesIndexPage from "./pages/CategoriesIndexPage";
 import TagsIndexPage from "./pages/TagsIndexPage";
 import CategoryPostsPage from "./pages/CategoryPostsPage";
 import TagPostsPage from "./pages/TagPostsPage";
+import Error404 from "./pages/errors/Error404"
 
 const router = new VueRouter({
     mode: "history",
@@ -54,6 +55,11 @@ const router = new VueRouter({
             path: "/tags/:slug",
             name: "tagPostsPage",
             component: TagPostsPage,
+        },
+        {
+            path: "/*",
+            name: "404",
+            component: Error404,
         }
     ],
 });
