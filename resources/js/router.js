@@ -9,6 +9,7 @@ import ContactPage from "./pages/ContactPage";
 import SingleCard from "./pages/SingleCard";
 import CategoriesIndexPage from "./pages/CategoriesIndexPage";
 import TagsIndexPage from "./pages/TagsIndexPage";
+import CategoryPostsPage from "./pages/CategoryPostsPage";
 
 const router = new VueRouter({
     mode: "history",
@@ -37,6 +38,11 @@ const router = new VueRouter({
             path: "/categories",
             name: "categories",
             component: CategoriesIndexPage,
+        },
+        {
+            path: "/categories/:slug",
+            name: "categoryPostsPage",
+            component: CategoryPostsPage,
         },
         {
             path: "/tags",

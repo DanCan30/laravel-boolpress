@@ -5,7 +5,7 @@
           <h1>
               Tags:
           </h1>
-          <GeneralCardComponent v-for="tag in tags" :key="tag.id" :cardElement="tag" />
+          <GeneralCardComponent v-for="tag in tags" :key="tag.id" :cardElement="tag" :routeLink="'/tags/' + tag.id" />
       </div>
       </main>
   </template>
@@ -37,9 +37,9 @@
               .then(response => {
                   this.tags = response.data.result.data;
                   this.isLoading = false;
-              })
-  
-          }
+              });
+          },
+
       },
       
       created() {

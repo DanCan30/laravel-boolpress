@@ -5,7 +5,7 @@
         <h1>
             Categories:
         </h1>
-        <GeneralCardComponent v-for="category in categories" :key="category.id" :cardElement="category" />
+        <GeneralCardComponent v-for="category in categories" :key="category.id" :cardElement="category" :routeLink="'/categories/' + category.slug" />
     </div>
     </main>
 </template>
