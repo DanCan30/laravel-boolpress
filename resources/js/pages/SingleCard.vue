@@ -45,6 +45,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+    div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>

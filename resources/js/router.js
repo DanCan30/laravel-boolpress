@@ -10,6 +10,7 @@ import SingleCard from "./pages/SingleCard";
 import CategoriesIndexPage from "./pages/CategoriesIndexPage";
 import TagsIndexPage from "./pages/TagsIndexPage";
 import CategoryPostsPage from "./pages/CategoryPostsPage";
+import TagPostsPage from "./pages/TagPostsPage";
 
 const router = new VueRouter({
     mode: "history",
@@ -48,6 +49,11 @@ const router = new VueRouter({
             path: "/tags",
             name: "tags",
             component: TagsIndexPage,
+        },
+        {
+            path: "/tags/:slug",
+            name: "tagPostsPage",
+            component: TagPostsPage,
         }
     ],
 });

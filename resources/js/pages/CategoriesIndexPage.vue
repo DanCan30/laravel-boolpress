@@ -33,7 +33,7 @@ export default {
 
     methods: {
         getCategories: function() {
-            axios.get("api/categories")
+            axios.get("/api/categories")
             .then(response => {
                 this.categories = response.data.result.data;
                 this.isLoading = false;

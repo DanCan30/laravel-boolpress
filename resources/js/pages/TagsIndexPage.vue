@@ -5,7 +5,7 @@
           <h1>
               Tags:
           </h1>
-          <GeneralCardComponent v-for="tag in tags" :key="tag.id" :cardElement="tag" :routeLink="'/tags/' + tag.id" />
+          <GeneralCardComponent v-for="tag in tags" :key="tag.id" :cardElement="tag" :routeLink="'/tags/' + tag.slug" />
       </div>
       </main>
   </template>
@@ -32,10 +32,10 @@
       },
   
       methods: {
-          getCategories: function() {
-              axios.get("api/tags")
+          getTags: function() {
+              axios.get("/api/tags")
               .then(response => {
-                  this.tags = response.data.result.data;
+                  this.tags = response.data.result;
                   this.isLoading = false;
               });
           },
@@ -43,7 +43,7 @@
       },
       
       created() {
-          this.getCategories();
+          this.getTags();
       }
   }
   </script>
