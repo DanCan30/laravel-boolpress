@@ -2504,13 +2504,22 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "card"
-  }, [_c("router-link", {
+  }, [_c("h2", [_c("router-link", {
     attrs: {
       to: "/posts/" + _vm.post.id
     }
-  }, [_c("h2", [_vm._v(_vm._s(_vm.post.title))])]), _vm._v(" "), _c("h5", [_vm._v(_vm._s(_vm.post.category.name) + " - "), _vm._l(_vm.post.tags, function (tag) {
-    return _c("span", {
-      key: tag.id
+  }, [_vm._v(_vm._s(_vm.post.title))])], 1), _vm._v(" "), _c("h5", [_c("router-link", {
+    staticClass: "category-link",
+    attrs: {
+      to: "/categories/" + _vm.post.category.slug
+    }
+  }, [_vm._v(_vm._s(_vm.post.category.name))]), _vm._v("  - "), _vm._l(_vm.post.tags, function (tag) {
+    return _c("router-link", {
+      key: tag.id,
+      staticClass: "tag-link",
+      attrs: {
+        to: "/tags/" + tag.slug
+      }
     }, [_vm._v(" #" + _vm._s(tag.name) + " ")]);
   })], 2), _vm._v(" "), _c("div", {
     staticClass: "img-container"
@@ -2531,7 +2540,7 @@ var render = function render() {
         return _vm.collapseContent(_vm.post.content);
       }
     }
-  }, [_vm._v("Show less")]) : _vm._e()])], 1);
+  }, [_vm._v("Show less")]) : _vm._e()])]);
 };
 
 var staticRenderFns = [];
@@ -2960,7 +2969,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "div.card[data-v-1324358a] {\n  width: calc(50% - 4rem);\n  margin: 2rem;\n  padding: 2rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  border: 2px solid black;\n}\ndiv.card h2[data-v-1324358a] {\n  text-align: center;\n  padding: 1rem;\n  align-self: flex-start;\n}\ndiv.card h5[data-v-1324358a] {\n  align-self: flex-start;\n  margin-left: 1rem;\n}\ndiv.card h5 span[data-v-1324358a] {\n  color: rgb(103, 141, 217);\n}\ndiv.card div.img-container[data-v-1324358a] {\n  margin: 1rem;\n}\ndiv.card div.img-container img[data-v-1324358a] {\n  max-width: 100%;\n}\ndiv.card h4[data-v-1324358a] {\n  align-self: flex-start;\n  margin-bottom: 1rem;\n  margin-left: 3rem;\n}\ndiv.card a[data-v-1324358a] {\n  color: blue;\n  cursor: pointer;\n}", ""]);
+exports.push([module.i, "div.card[data-v-1324358a] {\n  width: calc(50% - 4rem);\n  margin: 2rem;\n  padding: 2rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: center;\n  border: 2px solid black;\n}\ndiv.card h2[data-v-1324358a] {\n  text-align: center;\n  padding: 1rem;\n  font-size: 1.75rem;\n}\ndiv.card h2 a[data-v-1324358a] {\n  color: black;\n  text-decoration: none;\n}\ndiv.card h5[data-v-1324358a] {\n  align-self: flex-start;\n  margin-left: 1.5rem;\n  font-size: 1.5rem;\n}\ndiv.card h5 a[data-v-1324358a] {\n  text-decoration: none;\n}\ndiv.card h5 a.category-link[data-v-1324358a] {\n  color: black;\n  font-size: 1.5rem;\n}\ndiv.card h5 a.tag-link[data-v-1324358a] {\n  font-size: 1.3rem;\n  color: rgb(103, 141, 217);\n}\ndiv.card div.img-container[data-v-1324358a] {\n  margin: 1rem;\n}\ndiv.card div.img-container img[data-v-1324358a] {\n  max-width: 100%;\n}\ndiv.card h4[data-v-1324358a] {\n  align-self: flex-start;\n  margin-bottom: 1rem;\n  margin-left: 3rem;\n}\ndiv.card a[data-v-1324358a] {\n  color: blue;\n  cursor: pointer;\n}", ""]);
 
 // exports
 

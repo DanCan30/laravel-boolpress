@@ -1,7 +1,7 @@
 <template>
   <div class="card">
-    <router-link :to="'/posts/' + post.id"><h2>{{ post.title }}</h2></router-link>
-    <h5>{{ post.category.name }} - <span v-for="tag in post.tags" :key="tag.id"> #{{ tag.name }} </span></h5>
+    <h2><router-link :to="'/posts/' + post.id">{{ post.title }}</router-link></h2>
+    <h5><router-link class="category-link" :to="'/categories/' + post.category.slug">{{ post.category.name }}</router-link>  - <router-link class="tag-link" :to="'/tags/' + tag.slug " v-for="tag in post.tags" :key="tag.id"> #{{ tag.name }} </router-link></h5>
     <div class="img-container">
         <img :src="isValidUrl(post.post_image) ? post.post_image : 'http://127.0.0.1:8000/storage/' + post.post_image" alt="Post image">
     </div>
@@ -81,15 +81,27 @@ export default {
         h2 {
             text-align: center;
             padding: 1rem;
-            align-self: flex-start;
+            font-size: 1.75rem;
+            a {
+                color: black;
+                text-decoration: none;
+            }
         }
-
         h5 {
             align-self: flex-start;
-            margin-left: 1rem;
+            margin-left: 1.5rem;
+            font-size: 1.5rem;
+            a {
+                text-decoration: none;
 
-            span {
-                color: rgb(103, 141, 217);
+                &.category-link {
+                    color: black;
+                    font-size: 1.5rem;
+                }
+                &.tag-link {
+                    font-size: 1.3rem;
+                    color: rgb(103, 141, 217);
+                }
             }
         }
         div.img-container {
@@ -111,6 +123,6 @@ export default {
             color: blue;
             cursor: pointer;
         }
-
     }
+
 </style>
