@@ -11,7 +11,11 @@
                 <a href="#" @click="goToNextPage()">Next</a>
                 <a href="#" @click="goToLastPage()">>>|</a>
             </div>
-            
+            <div class="searchbar-container">
+                <input type="search" name="search-post" id="search-post" placeholder="Search a post..." v-model="searchInput">
+                <a class="search-button" @click="searchPost()">Search</a>
+            </div>
+
             <section class="cards-container">
                 
                 <PostCard v-for="post in posts" :key="post.id" :post="post"/>
@@ -52,6 +56,7 @@ export default {
             nextPage: 0,
             lastPage: 0,
             isLoading: true,
+            searchInput: "",
         }
     },
 
@@ -66,6 +71,13 @@ export default {
                 this.nextPage = this.currentPage + 1;
                 this.isLoading = false;
             }).catch((error) => console.error(error.message));
+        },
+
+        searchPost: function() {
+            axios.get("/api/posts/search/" + this.searchInput)
+            .then(response => {
+                this.posts = response.data.result;
+            }).catch(error=> console.error(error.message));
         },
 
         goToNextPage: function() {
@@ -127,6 +139,35 @@ h1 {
     font-size: 4rem;
     text-align: center;
     margin-top: 2rem;
+}
+
+div.searchbar-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 4rem;
+
+    input {
+        font-size: 1.5rem;
+        padding: .25rem 1rem;
+    }
+
+    a {
+        font-size: 1.25rem;
+        margin-left: 1rem;
+        display: inline-block;
+        text-decoration: none;
+        color: limegreen;
+        padding: .5rem 1rem;
+        border: 1px solid limegreen;
+        border-radius: .5rem;
+
+        &:hover {
+            background-color: limegreen;
+            color: white;
+            transition: all .3s;
+        }
+    }
 }
 
 section.cards-container {

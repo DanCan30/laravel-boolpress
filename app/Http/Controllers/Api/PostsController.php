@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin\Post;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 
 class PostsController extends Controller
@@ -98,5 +99,14 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function searchPosts($title)
+    {
+        $posts = Post::with("user", "category", "tags")->where("title", "LIKE", "%" . $title . "%")->get();
+            return response()->json([
+            "response" => true,
+            "result" => $posts,
+        ]);
     }
 }

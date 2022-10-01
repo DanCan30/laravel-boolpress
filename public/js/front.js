@@ -2150,7 +2150,8 @@ __webpack_require__.r(__webpack_exports__);
       currentPage: 1,
       nextPage: 0,
       lastPage: 0,
-      isLoading: true
+      isLoading: true,
+      searchInput: ""
     };
   },
   methods: {
@@ -2168,6 +2169,15 @@ __webpack_require__.r(__webpack_exports__);
         _this.previousPage = _this.currentPage - 1;
         _this.nextPage = _this.currentPage + 1;
         _this.isLoading = false;
+      })["catch"](function (error) {
+        return console.error(error.message);
+      });
+    },
+    searchPost: function searchPost() {
+      var _this2 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("/api/posts/search/" + this.searchInput).then(function (response) {
+        _this2.posts = response.data.result;
       })["catch"](function (error) {
         return console.error(error.message);
       });
@@ -2756,7 +2766,38 @@ var render = function render() {
         return _vm.goToLastPage();
       }
     }
-  }, [_vm._v(">>|")])]), _vm._v(" "), _c("section", {
+  }, [_vm._v(">>|")])]), _vm._v(" "), _c("div", {
+    staticClass: "searchbar-container"
+  }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.searchInput,
+      expression: "searchInput"
+    }],
+    attrs: {
+      type: "search",
+      name: "search-post",
+      id: "search-post",
+      placeholder: "Search a post..."
+    },
+    domProps: {
+      value: _vm.searchInput
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+        _vm.searchInput = $event.target.value;
+      }
+    }
+  }), _vm._v(" "), _c("a", {
+    staticClass: "search-button",
+    on: {
+      click: function click($event) {
+        return _vm.searchPost();
+      }
+    }
+  }, [_vm._v("Search")])]), _vm._v(" "), _c("section", {
     staticClass: "cards-container"
   }, _vm._l(_vm.posts, function (post) {
     return _c("PostCard", {
@@ -3074,7 +3115,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "h1[data-v-04c29797] {\n  text-transform: uppercase;\n  font-size: 4rem;\n  text-align: center;\n  margin-top: 2rem;\n}\nsection.cards-container[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n  margin: 5rem auto;\n}\ndiv.pagination-buttons-container[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 2rem;\n  margin-bottom: 3rem;\n}\ndiv.pagination-buttons-container a[data-v-04c29797] {\n  text-decoration: none;\n  color: blue;\n}", ""]);
+exports.push([module.i, "h1[data-v-04c29797] {\n  text-transform: uppercase;\n  font-size: 4rem;\n  text-align: center;\n  margin-top: 2rem;\n}\ndiv.searchbar-container[data-v-04c29797] {\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n  margin-right: 4rem;\n}\ndiv.searchbar-container input[data-v-04c29797] {\n  font-size: 1.5rem;\n  padding: 0.25rem 1rem;\n}\ndiv.searchbar-container a[data-v-04c29797] {\n  font-size: 1.25rem;\n  margin-left: 1rem;\n  display: inline-block;\n  text-decoration: none;\n  color: limegreen;\n  padding: 0.5rem 1rem;\n  border: 1px solid limegreen;\n  border-radius: 0.5rem;\n}\ndiv.searchbar-container a[data-v-04c29797]:hover {\n  background-color: limegreen;\n  color: white;\n  transition: all 0.3s;\n}\nsection.cards-container[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-wrap: wrap;\n  margin: 5rem auto;\n}\ndiv.pagination-buttons-container[data-v-04c29797] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 2rem;\n  margin-bottom: 3rem;\n}\ndiv.pagination-buttons-container a[data-v-04c29797] {\n  text-decoration: none;\n  color: blue;\n}", ""]);
 
 // exports
 
