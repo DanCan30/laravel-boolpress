@@ -2999,7 +2999,9 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "container"
-  }, [_c("HeaderComponent"), _vm._v(" "), _c("router-view")], 1);
+  }, [_c("HeaderComponent"), _vm._v(" "), _c("router-view", {
+    key: _vm.$route.fullPath
+  })], 1);
 };
 
 var staticRenderFns = [];
@@ -20681,7 +20683,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/danielecanale/Desktop/Repo/laravel-boolpress/resources/js/front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\danie\Desktop\Repositories\laravel-boolpress\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
