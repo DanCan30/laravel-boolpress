@@ -56,11 +56,11 @@ const router = new VueRouter({
             name: "tagPostsPage",
             component: TagPostsPage,
         },
-        {
-            path: "/*",
-            name: "404",
-            component: Error404,
-        }
+        // {
+        //     path: "/*",
+        //     name: "404",
+        //     component: Error404,
+        // }
     ],
 });
 

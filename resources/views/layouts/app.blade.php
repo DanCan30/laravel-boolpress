@@ -70,7 +70,7 @@
                             @endif
                         @else
                             <li class="nav-item dropdown d-flex">
-                                <a href="{{ route("admin.create") }}" class="btn btn-md btn-primary">Create New Post</a>
+                                <a href="{{ route("posts.create") }}" class="btn btn-md btn-primary">Create New Post</a>
 
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

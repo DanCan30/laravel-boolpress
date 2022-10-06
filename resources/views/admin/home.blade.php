@@ -21,7 +21,7 @@
     </div>
     
     <div class="text-center pt-5">
-        <a href="{{ route("admin.index") }}" class="btn btn-lg btn-primary">Posts</a>
+        <a href="{{ route("posts.index") }}" class="btn btn-lg btn-primary">Posts</a>
     </div>
 </div>
 @endsection

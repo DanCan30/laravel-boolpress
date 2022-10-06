@@ -20579,11 +20579,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: "/tags/:slug",
     name: "tagPostsPage",
     component: _pages_TagPostsPage__WEBPACK_IMPORTED_MODULE_9__["default"]
-  }, {
-    path: "/*",
-    name: "404",
-    component: _pages_errors_Error404__WEBPACK_IMPORTED_MODULE_10__["default"]
-  }]
+  } // {
+  //     path: "/*",
+  //     name: "404",
+  //     component: Error404,
+  // }
+  ]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
 
